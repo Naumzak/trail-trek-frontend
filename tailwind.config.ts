@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        '128': '32rem',
+        '112': '28rem',
+        '120': '30rem',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
