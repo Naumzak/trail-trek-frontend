@@ -2,7 +2,7 @@ import {Navigation} from "@/app/components/Navigation";
 import {baseApiUrl} from "@/api";
 
 export default async function Home() {
-  const res = await fetch(`${baseApiUrl}/api/trips`);
+  const res = await fetch(`${baseApiUrl}/api/trips`,  {next: { tags: ['trips'] } });
   const cards = await res.json();
   
   return (

@@ -2,6 +2,7 @@ import {useRef, useState} from "react";
 import {useSpring} from "@react-spring/web";
 import {useGesture} from "@use-gesture/react";
 import {animated,} from '@react-spring/web'
+import {EditIcon} from "@/componentLib/icons/Edit";
 
 interface IProps {
   name: string,
@@ -9,8 +10,9 @@ interface IProps {
   location: string,
   distance: string
   img: string
+  onEdit: ()=>void
 }
-export const Card =({name, img, location, distance, date}: IProps)=>{
+export const Card =({name, img, location, distance, date, onEdit}: IProps)=>{
   const target = useRef(null)
   const [t, setT] = useState(false)
   
@@ -25,6 +27,9 @@ export const Card =({name, img, location, distance, date}: IProps)=>{
   return(
     <animated.div className='w-64 h-96 mx-10 inline-block rounded-xl cursor-pointer' style={{...props, overflow: 'hidden'}} ref={target}>
       <div style={{backgroundImage: `url(${img})`, backgroundSize: 'cover'}} className='h-full w-full relative'>
+        <div className='absolute top-2 right-2' onClick={onEdit}>
+          <EditIcon/>
+        </div>
         <div  className='h-2/6 w-full absolute bottom-0 bg-black/60 p-3'>
           <div className='whitespace-normal	text-white font-semibold font-mono text-sm'>
             {name}
