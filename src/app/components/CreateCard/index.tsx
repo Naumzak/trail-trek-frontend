@@ -7,13 +7,13 @@ import {animated,} from '@react-spring/web'
 
 export const CreateCard =()=>{
   const target = useRef(null)
-  const [t, setT] = useState(false)
+  const [focus, setFocus] = useState(false)
   
-  const props = useSpring({scale: t ? 1.1 : 1})
+  const props = useSpring({scale: focus ? 1.1 : 1})
   
   useGesture(
     {
-      onHover: ({ hovering }) => {setT(!!hovering)}
+      onHover: ({ hovering }) => {setFocus(!!hovering)}
     },
     { target, eventOptions: { passive: false } }
   )
