@@ -1,9 +1,8 @@
 import Dialog from '@mui/material/Dialog';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import trips from '@data/trips.json';
 import {SubmitHandler, useForm} from "react-hook-form";
-
+import axios from "axios";
 
 interface IProps{
   type: 'edit' | 'create' | null
@@ -25,12 +24,8 @@ export const EditCard = ({open, onClose, type, defaultValues}: IProps)=>{
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>()
-  const onCreate: SubmitHandler<Inputs>=(data)=>{
-    trips.push({
-      ...data,
-      id: trips.length,
-      img: ''
-    })
+  const onCreate: SubmitHandler<Inputs>=async (data)=>{
+    const res = await axios.post(`/api/trips`,  data);
     onClose()
   }
   return(
